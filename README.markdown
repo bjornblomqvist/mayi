@@ -2,6 +2,8 @@
 
 A plugable access rights api. Ment to make integrations easier.
 
+Also i find that may_do_x and may_do_y is much nicer to read than if user_object.is_admin?.
+
 ## Basics
 
 You have a class that implements boolean questions.

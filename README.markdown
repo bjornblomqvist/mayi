@@ -1,4 +1,4 @@
-= may-i
+# may-i
 
 A plugable access rights api. Ment to make integrations easier.
 
@@ -53,13 +53,15 @@ end
 access.may_create_new_record! do
   # You do stuff here
 end
+```
 
-# With custom error message
+With custom error message
+
+```ruby
 access.error_message("Sorry but you are not allowed to do this!").may_create_new_record! do
   # You do stuff here
 end
 ```
-
 
 
 
@@ -104,7 +106,7 @@ end
 ```
 
 
-== Contributing to may-i
+## Contributing to may-i
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -114,7 +116,7 @@ end
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2012 Darwin. See LICENSE.txt for
 further details.

@@ -13,7 +13,7 @@ end
 Now with MayI.
 
 ```ruby
-access.may_add_user do
+access.may_add_user! do
 
 end
 ```

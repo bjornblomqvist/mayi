@@ -1,19 +1,20 @@
 # MayI
 
-A plugable access rights api. Ment to make integrations easier.
+A plugable access rights API. Meant to make integrations easier. Werry useful as an integration point for blog,forum and CMS components. Also its much nicer to read than the basic stuff i usually do.
 
-Also i find that
-
+The Good.
 ```ruby
 access.may_do_x do
 
 end
 ```
 
-is much nicer to read than
+The ugly!
 
 ```ruby
-if user_object.is_admin?.
+if user_object.is_admin?
+
+end
 ```
 
 ## Basics

@@ -27,18 +27,13 @@ This can then be used with the MayI::Access class.
 
 ```ruby
 access = MayI::Access.new(MyBasicAccess)
-```
 
-###Simple boolean
-
-```ruby
+# Simple boolean
 if access.may_create_new_record?
   # You do stuff here
 end
 
-###With a block
-
-```ruby
+# With a block
 access.may_create_new_record? do
   # You do stuff here
 end
@@ -48,17 +43,13 @@ Now with exceptions. On failure the MayI::AccessDeniedError error is raised.
 
 ```ruby
 access = MayI::Access.new(MyBasicAccess)
-```
 
-### Simple boolean
-```ruby
+# Simple boolean
 if access.may_create_new_record!
   # You do stuff here
 end
-```
 
-### With a block
-```ruby
+# With a block
 access.may_create_new_record! do
   # You do stuff here
 end

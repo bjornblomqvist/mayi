@@ -1,4 +1,4 @@
-# may-i
+# May-i
 
 A plugable access rights api. Ment to make integrations easier.
 

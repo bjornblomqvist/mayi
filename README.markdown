@@ -2,7 +2,19 @@
 
 A plugable access rights api. Ment to make integrations easier.
 
-Also i find that may_do_x and may_do_y is much nicer to read than if user_object.is_admin?.
+Also i find that
+
+```ruby
+access.may_do_x do
+
+end
+```
+
+is much nicer to read than
+
+```ruby
+if user_object.is_admin?.
+```
 
 ## Basics
 

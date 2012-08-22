@@ -1,4 +1,4 @@
-# May-i
+# MayI
 
 A plugable access rights api. Ment to make integrations easier.
 
@@ -27,13 +27,18 @@ This can then be used with the MayI::Access class.
 
 ```ruby
 access = MayI::Access.new(MyBasicAccess)
+```
 
-# Simple boolean
+###Simple boolean
+
+```ruby
 if access.may_create_new_record?
   # You do stuff here
 end
 
-# With a block
+###With a block
+
+```ruby
 access.may_create_new_record? do
   # You do stuff here
 end
@@ -43,13 +48,17 @@ Now with exceptions. On failure the MayI::AccessDeniedError error is raised.
 
 ```ruby
 access = MayI::Access.new(MyBasicAccess)
+```
 
-# Simple boolean
+### Simple boolean
+```ruby
 if access.may_create_new_record!
   # You do stuff here
 end
+```
 
-# With a block
+### With a block
+```ruby
 access.may_create_new_record! do
   # You do stuff here
 end
@@ -67,7 +76,7 @@ end
 
 
 
-## How one could use it in rails
+## A Rails example
 
 
 We give it the data it needs
@@ -106,7 +115,7 @@ end
 ```
 
 
-## Contributing to may-i
+## Contributing to MayI
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.

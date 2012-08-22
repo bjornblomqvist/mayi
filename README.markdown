@@ -69,8 +69,7 @@ end
 
 ## A Rails example
 
-
-We give it the data it needs
+On each request we create a new instance of MyBasicAccess with the current session.
 
 ```ruby
 class ApplicationController < ActionController::Base
@@ -78,7 +77,11 @@ class ApplicationController < ActionController::Base
   
   def init_access 
     # Refresh with the relevant data for this request
-    access.refresh({:session => session})
+    ApplicationController.access.refresh({:session => session})
+  end
+  
+  def self.access
+    @@access_cache
   end
   
   def access
@@ -90,7 +93,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-And here we use the API
+We use the API to check if a user should be able to view some secret stuff.
 
 ```ruby
 class SecretStuffController < ApplicationController
@@ -98,6 +101,20 @@ class SecretStuffController < ApplicationController
   def show
     stuff = Stuff.find(params[:id])
     access.may_view_secret_stuff?(stuff) do
+    
+    end
+  end
+  
+end
+```
+
+We can also use it in a model.
+
+```ruby
+class ShortUrl < ActiveRecord::Base
+
+  def method_that_requires_special_access
+    ApplicationController.access.may_create_new_record! do
     
     end
   end

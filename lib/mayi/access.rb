@@ -9,7 +9,13 @@ module MayI
     
     def refresh(data = {})
       raise "You have not set any implementation yet" unless self.implementation
-      Thread.current["mayi_access_implementation_#{self.object_id}"] = self.implementation.new(data)
+      if self.implementation.is_a?(Class)
+        Thread.current["mayi_access_implementation_#{self.object_id}"] = self.implementation.new(data)
+      else
+        instance = self.implementation.to_s.split('::').reduce(Object){|cls, c| cls.const_get(c) }.new(data)
+        Thread.current["mayi_access_implementation_#{self.object_id}"] = instance
+      end
+      
     end
     
     def clear

@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "mayi"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Darwin"]
-  s.date = "2012-08-22"
-  s.description = " A plugable access rights api. Ment to make integrations easier. "
+  s.date = "2012-08-23"
+  s.description = " A plugable access rights API. Meant to make integrations easier. Werry useful as an integration point for blog,forum and CMS components. Also its much nicer to read than the basic stuff i usually do. "
   s.email = "darwin@bits2life.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "lib/mayi/access.rb",
     "lib/mayi/access_denied_error.rb",
     "lib/mayi/proxy.rb",
+    "mayi.gemspec",
     "spec/mayi_spec.rb",
     "spec/spec_helper.rb"
   ]
@@ -36,7 +37,7 @@ Gem::Specification.new do |s|
   s.licenses = ["LGPL3"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "A plugable access rights api. Ment to make integrations easier."
+  s.summary = "A plugable access rights API. Meant to make integrations easier."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

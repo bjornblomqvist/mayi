@@ -23,7 +23,9 @@ module MayI
     end
     
     def current_instance
-      Thread.current["mayi_access_implementation_#{self.object_id}"] || refresh
+      raise "You must call refresh to create a new instance of your Access implementation before being able to use the access object." unless Thread.current["mayi_access_implementation_#{self.object_id}"]
+        
+      Thread.current["mayi_access_implementation_#{self.object_id}"]
     end
     
     def method_missing(meth, *args, &block)

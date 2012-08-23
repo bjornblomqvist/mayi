@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "mayi"
   gem.homepage = "http://github.com/bjornblomqvist/mayi"
   gem.license = "LGPL3"
-  gem.summary = %Q{ A plugable access rights api. Ment to make integrations easier. }
-  gem.description = %Q{ A plugable access rights api. Ment to make integrations easier. }
+  gem.summary = %Q{ A plugable access rights API. Meant to make integrations easier. }
+  gem.description = %Q{ A plugable access rights API. Meant to make integrations easier. Werry useful as an integration point for blog,forum and CMS components. Also its much nicer to read than the basic stuff i usually do. }
   gem.email = "darwin@bits2life.com"
   gem.authors = ["Darwin"]
   # dependencies defined in Gemfile

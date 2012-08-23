@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
   before_filter :init_access
   
   def init_access 
-    # Refresh with the relevant data for this request
+    # Create a new instance of MyBasicAccess with the current session
     ApplicationController.access.refresh({:session => session})
   end
   

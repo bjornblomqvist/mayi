@@ -1,6 +1,6 @@
 # MayI
 
-A plugable access rights API. Meant to make integrations easier. Werry useful as an integration point for blog,forum and CMS components. Also its much nicer to read than the basic stuff i usually do.
+A plugable access rights API. Meant to make integrations easier. Verry useful as an integration point for blog,forum and CMS components. Also its much nicer to read than the basic stuff i usually do.
 
 Before without MayI.
 

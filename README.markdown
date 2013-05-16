@@ -1,29 +1,31 @@
 # MayI
 
-A plugable access rights API. Meant to make integrations easier. Verry useful as an integration point for blog,forum and CMS components. Also its much nicer to read than the basic stuff i usually do.
+A nice explicit API for access rights handling.
 
-An example basic way to do rights handeling
+## In short
+
+This can be found in code i have written.
 
 ```ruby
 if user_object.is_admin?
-...
+  ...
 end
 ```
 
-With mayi this changes to method with an explicit mening to it.
+With mayi this changes to method call with an explicit mening to it.
 
 ```ruby
 access.may_add_user! do
-...
+  ...
 end
 ```
 
+I have found this small API change to be a big win! Now we have the actually question we wish to answer documented.
 
 
+## The API
 
-## An example
-
-Your rights implements with boolean questions.
+Your rights implementation with boolean questions.
 
 ```ruby
 class MyAccessHandler
@@ -44,8 +46,7 @@ class MyAccessHandler
 end
 ```
 
-This can then be used with the MayI::Access class.
-
+The resulting API
 
 ```ruby
 
@@ -68,7 +69,7 @@ access.error_message("A custom error message").may_view_secret_project!(project)
 
 ```
 
-## A Rails example
+## With Rails
 
 ```ruby
 class ApplicationController < ActionController::Base

@@ -2,41 +2,44 @@
 
 A plugable access rights API. Meant to make integrations easier. Verry useful as an integration point for blog,forum and CMS components. Also its much nicer to read than the basic stuff i usually do.
 
-Before without MayI.
+An example basic way to do rights handeling
 
 ```ruby
 if user_object.is_admin?
-
+...
 end
 ```
 
-Now with MayI.
+With mayi this changes to method with an explicit mening to it.
 
 ```ruby
 access.may_add_user! do
-
+...
 end
 ```
 
 
 
 
-## Basics
+## An example
 
-You have a class that implements boolean questions.
+Your rights implements with boolean questions.
 
 ```ruby
-class MyBasicAccess
-  def initialize(data)
-    @data = data
+class MyAccessHandler
+
+  include MayI
+  
+  def initialize(user)
+    @user = user
   end
   
-  def may_view_secret_stuff(stuff)
-    stuff.owner_id ==  data[:session][:user_id]
+  def may_view_secret_project(project)
+    stuff.owner_id ==  @user.id
   end
   
   def may_create_new_record
-    data[:session][:user_type] == "admin"
+    @user.type == "admin"
   end
 end
 ```
@@ -45,7 +48,8 @@ This can then be used with the MayI::Access class.
 
 
 ```ruby
-access = MayI::Access.new(MyBasicAccess)
+
+access = MyAccessHandler.new(user)
 
 # Simple boolean
 if access.may_create_new_record?
@@ -56,84 +60,41 @@ end
 access.may_create_new_record? do
   # You do stuff here
 end
+
+# Raise errors on false
+access.may_view_secret_project!(project)
+# or
+access.error_message("A custom error message").may_view_secret_project!(project)
+
 ```
-
-Now with exceptions. On failure the MayI::AccessDeniedError error is raised.
-
-```ruby
-access = MayI::Access.new(MyBasicAccess)
-
-# Simple boolean
-if access.may_create_new_record!
-  # You do stuff here
-end
-
-# With a block
-access.may_create_new_record! do
-  # You do stuff here
-end
-```
-
-With custom error message
-
-```ruby
-access.error_message("Sorry but you are not allowed to do this!").may_create_new_record! do
-  # You do stuff here
-end
-```
-
-
-
-
 
 ## A Rails example
 
-On each request we create a new instance of MyBasicAccess with the current session.
-
 ```ruby
 class ApplicationController < ActionController::Base
-  before_filter :init_access
-  
-  def init_access 
-    # Create a new instance of MyBasicAccess with the current session
-    ApplicationController.access.refresh({:session => session})
+
+  helper_method :current_user
+  def current_user 
+    ...
   end
   
-  def self.access
-    @@access_cache
-  end
-  
+  helper_method :access
   def access
-    @@access_cache
+    @@access_cache ||= MyAccessHandler.new(current_user)
   end
   
-  @@access_cache = MayI::Access.new
-  @@access_cache.implementation = MyBasicAccess
 end
 ```
 
-We use the API to check if a user should be able to view some secret stuff.
+Check if a user should be able to view some secret stuff.
 
 ```ruby
-class SecretStuffController < ApplicationController
+class StuffController < ApplicationController
 
   def show
     stuff = Stuff.find(params[:id])
-    access.may_view_secret_stuff?(stuff) do
     
-    end
-  end
-  
-end
-```
-
-We can also use it in a model.
-
-```ruby
-class ShortUrl < ActiveRecord::Base
-
-  def method_that_requires_special_access
-    ApplicationController.access.may_create_new_record! do
+    access.may_view_secret_stuff?(stuff) do
     
     end
   end

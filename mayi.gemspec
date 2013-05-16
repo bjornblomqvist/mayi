@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "mayi"
-  s.version = "1.0.2"
+  s.version = "2.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Darwin"]
-  s.date = "2012-08-23"
+  s.date = "2013-05-16"
   s.description = " A plugable access rights API. Meant to make integrations easier. Werry useful as an integration point for blog,forum and CMS components. Also its much nicer to read than the basic stuff i usually do. "
   s.email = "darwin@bits2life.com"
   s.extra_rdoc_files = [
@@ -26,10 +26,10 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/mayi.rb",
-    "lib/mayi/access.rb",
     "lib/mayi/access_denied_error.rb",
-    "lib/mayi/proxy.rb",
+    "lib/mayi/methods.rb",
     "mayi.gemspec",
+    "spec/lib/test_helper.rb",
     "spec/mayi_spec.rb",
     "spec/spec_helper.rb"
   ]

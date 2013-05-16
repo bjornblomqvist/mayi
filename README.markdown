@@ -46,7 +46,7 @@ class MyAccessHandler
 end
 ```
 
-The resulting API
+How one uses the MyAccessHandler
 
 ```ruby
 
@@ -54,12 +54,12 @@ access = MyAccessHandler.new(user)
 
 # Simple boolean
 if access.may_create_new_record?
-  # You do stuff here
+  ...
 end
 
 # With a block
 access.may_create_new_record? do
-  # You do stuff here
+  ...
 end
 
 # Raise errors on false
@@ -87,8 +87,6 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-Check if a user should be able to view some secret stuff.
-
 ```ruby
 class StuffController < ApplicationController
 
@@ -96,7 +94,7 @@ class StuffController < ApplicationController
     stuff = Stuff.find(params[:id])
     
     access.may_view_secret_stuff?(stuff) do
-    
+      ...
     end
   end
   

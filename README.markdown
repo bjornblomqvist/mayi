@@ -4,7 +4,7 @@ A nice explicit API for access rights handling.
 
 ## In short
 
-This can be found in code i have written.
+This is an example from one of my older projects.
 
 ```ruby
 if user_object.is_admin?
@@ -12,7 +12,7 @@ if user_object.is_admin?
 end
 ```
 
-With mayi this changes to method call with an explicit mening to it.
+With MayI.
 
 ```ruby
 access.may_add_user! do
@@ -20,12 +20,12 @@ access.may_add_user! do
 end
 ```
 
-I have found this small API change to be a big win! Now we have the actually question we wish to answer documented.
+As you can see with MayI this changes to a nice method call with an explicit mening. I have found this small API to be a big win! Now we have the actually question we wish to have answered documented.
 
 
 ## The API
 
-Your rights implementation with boolean questions.
+A basic access rights implementation.
 
 ```ruby
 class MyAccessHandler
@@ -46,7 +46,7 @@ class MyAccessHandler
 end
 ```
 
-How one uses the MyAccessHandler
+This is how you would it.
 
 ```ruby
 
@@ -62,9 +62,13 @@ access.may_create_new_record? do
   ...
 end
 
-# Raise errors on false
+# With erros
 access.may_view_secret_stuff!(stuff)
-# or
+access.may_view_secret_stuff!(stuff) do
+  ...
+end
+
+# With custom error message
 access.error_message("A custom error message").may_view_secret_stuff!(stuff)
 
 ```

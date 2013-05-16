@@ -36,7 +36,7 @@ class MyAccessHandler
     @user = user
   end
   
-  def may_view_secret_project(project)
+  def may_view_secret_stuff(stuff)
     stuff.owner_id ==  @user.id
   end
   
@@ -63,9 +63,9 @@ access.may_create_new_record? do
 end
 
 # Raise errors on false
-access.may_view_secret_project!(project)
+access.may_view_secret_stuff!(stuff)
 # or
-access.error_message("A custom error message").may_view_secret_project!(project)
+access.error_message("A custom error message").may_view_secret_stuff!(stuff)
 
 ```
 

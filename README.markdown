@@ -1,10 +1,10 @@
 # MayI
 
-A nice explicit API for access rights handling.
+A nice explicit API for activity based authorization. Having the authorization question clearly writen out.
 
 ## In short
 
-This is an example from one of my older projects.
+**Role based authorization**
 
 ```ruby
 if user_object.is_admin?
@@ -12,7 +12,7 @@ if user_object.is_admin?
 end
 ```
 
-With MayI.
+**Activity based authorization**
 
 ```ruby
 access.may_add_user! do
@@ -20,7 +20,7 @@ access.may_add_user! do
 end
 ```
 
-As you can see with MayI this changes to a nice method call with an explicit mening. I have found this small API to be a big win! Now we have the actually question we wish to have answered documented.
+As you can see with MayI this changes to a nice method call with an explicit mening. I have found this small API to be a big win! Now we have the actually question we want answered documented.
 
 
 ## The API
@@ -46,7 +46,7 @@ class MyAccessHandler
 end
 ```
 
-This is how you would it.
+This is how you would use it.
 
 ```ruby
 
@@ -114,10 +114,9 @@ end
 * Start a feature/bugfix branch.
 * Commit and push until you are happy with your contribution.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 ## Copyright
 
-Copyright (c) 2012 Darwin. See LICENSE.txt for
+Copyright (c) 2012-2015 Darwin. See LICENSE.txt for
 further details.
 
